@@ -1,0 +1,51 @@
+# IBM Developer's Workframe/2 Make File Creation run at 11:56:23 on 03/20/93
+
+# Make File Creation run in directory:
+#   E:\CCODE\CRAPS 2.0;
+
+.SUFFIXES:
+
+.SUFFIXES: .c .cpp .cxx .rc .ipf
+
+all: craps.exe \
+     craps.hlp \
+     craps.res
+
+craps.exe:  \
+  craps.obj \
+  craps.res \
+  graphics.obj \
+  logic.obj \
+  message.obj \
+  utility.obj \
+  winprocs.obj \
+  makefile
+   icc.exe @<<
+ /b" /base:0x10000 /pmtype:pm /align:4 /nologo"
+ /fe"craps.exe" craps.def 
+craps.obj 
+graphics.obj 
+logic.obj 
+message.obj 
+utility.obj 
+winprocs.obj
+<<
+   rc craps.res craps.exe
+
+{.}.rc.res:
+   rc -r .\$*.rc
+
+{.}.ipf.hlp:
+   ipfc .\$*.ipf
+
+{.}.c.obj:
+   icc.exe /fd /q /o /c   .\$*.c
+
+{.}.cpp.obj:
+   icc.exe /fd /q /o /c   .\$*.cpp
+
+{.}.cxx.obj:
+   icc.exe /fd /q /o /c   .\$*.cxx
+
+!include makefile.dep
+

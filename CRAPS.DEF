@@ -1,0 +1,13 @@
+NAME         CRAPS WINDOWAPI
+
+DESCRIPTION 'Las Vegas style crap game'
+
+;STUB       'OS2STUB.EXE'
+
+DATA         MULTIPLE
+
+STACKSIZE    16384
+HEAPSIZE     8192
+
+PROTMODE
+

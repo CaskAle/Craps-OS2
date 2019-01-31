@@ -1,0 +1,233 @@
+/****************************************************************/
+/* Las Vegas Craps Resource File                                */
+/****************************************************************/
+
+#include <os2.h>
+#include "define.h"
+#include "crapsdlg.h"
+
+/****************************************************************/
+/* Dialog Boxes                                                 */
+/****************************************************************/
+
+rcinclude craps.dlg
+
+/****************************************************************/
+/* Icon Pointer                                                 */
+/****************************************************************/
+
+POINTER ID_MAIN craps.ico
+
+/****************************************************************/
+/* Menu                                                         */
+/****************************************************************/
+
+MENU ID_MAIN
+{
+  SUBMENU "~File",                       IDM_FILE
+  {
+    MENUITEM "~New...",                  IDM_FILENEW
+  }
+  SUBMENU "~Bet",                        IDM_BET
+  {
+    SUBMENU "~Line",                     IDM_BETLINE
+    {
+      MENUITEM "~Pass line...",          IDM_BETPASS
+      MENUITEM "~Don't pass...",         IDM_BETDONTPASS
+      MENUITEM "~Come line...",          IDM_BETCOME
+      MENUITEM "Do~n't come...",         IDM_BETDONTCOME
+    }
+    SUBMENU "Pla~ce",                    IDM_BETPLACE
+    {
+      MENUITEM "Place ~four...",         IDM_BETPLACEFOUR
+      MENUITEM "Place fi~ve...",         IDM_BETPLACEFIVE
+      MENUITEM "Place ~six...",          IDM_BETPLACESIX
+      MENUITEM "Place ~eight...",        IDM_BETPLACEEIGHT
+      MENUITEM "Place ~nine...",         IDM_BETPLACENINE
+      MENUITEM "Place ~ten...",          IDM_BETPLACETEN
+    }
+    SUBMENU "~Proposition",              IDM_BETPROPOSITION
+    {
+      MENUITEM "Any ~seven...",          IDM_BETANYSEVEN
+      MENUITEM "Any ~craps...",          IDM_BETANYCRAPS
+      MENUITEM "~Two...",                IDM_BETTWO
+      MENUITEM "T~hree...",              IDM_BETTHREE
+      MENUITEM "~Eleven...",             IDM_BETELEVEN
+      MENUITEM "T~welve...",             IDM_BETTWELVE
+    }
+    SUBMENU "~Hardways",                 IDM_BETHARDWAYS
+    {
+      MENUITEM "Hard ~four...",          IDM_BETHARDFOUR
+      MENUITEM "Hard ~six...",           IDM_BETHARDSIX
+      MENUITEM "Hard ~eight...",         IDM_BETHARDEIGHT
+      MENUITEM "Hard ~ten...",           IDM_BETHARDTEN
+    }
+    MENUITEM "Big ~six...",              IDM_BETBIGSIX
+    MENUITEM "Big ~eight...",            IDM_BETBIGEIGHT
+    MENUITEM "~Field...",                IDM_BETFIELD
+  }
+  SUBMENU    "~Roll",                    IDM_ROLL
+  {
+    MENUITEM "~Roll dice\tSpace",        IDM_ROLLROLL
+  }
+  SUBMENU "~Options",                    IDM_OPTIONS
+  {
+    MENUITEM "~Marker...",               IDM_OPTIONSMARKER
+    MENUITEM "~Settings...",             IDM_OPTIONSSETTINGS
+  }
+  SUBMENU "~Help",                       IDM_HELP
+  {
+    MENUITEM "~Help index ...",          SC_HELPINDEX,    MIS_SYSCOMMAND
+    MENUITEM "~General help...",         SC_HELPEXTENDED, MIS_SYSCOMMAND
+    MENUITEM "~Using help...",           IDM_HELPHELP
+    MENUITEM SEPARATOR
+    MENUITEM "~Product information...",  IDM_HELPABOUT
+  }
+}
+
+/****************************************************************/
+/* Help Table                                                   */
+/****************************************************************/
+
+HELPTABLE ID_MAIN
+{
+  HELPITEM ID_MAIN,         SUBTABLE_MAIN, IDH_MAIN_EXT
+  HELPITEM IDD_NEWBOX,      SUBTABLE_MAIN, IDH_NEW_EXT
+  HELPITEM IDD_ABOUTBOX,    SUBTABLE_MAIN, IDH_ABOUT_EXT
+  HELPITEM IDD_SETTINGSBOX, SUBTABLE_MAIN, IDH_SETTINGS_EXT
+  HELPITEM IDD_MARKERBOX,   SUBTABLE_MAIN, IDH_MARKER_EXT
+  HELPITEM IDD_BETBOX,      SUBTABLE_MAIN, IDH_BET_EXT
+}
+
+HELPSUBTABLE SUBTABLE_MAIN
+{
+  HELPSUBITEM IDM_FILE,            IDH_FILE
+  HELPSUBITEM IDM_FILENEW,         IDH_FILENEW
+
+  HELPSUBITEM IDM_BET,             IDH_BET
+  HELPSUBITEM IDM_BETLINE,         IDH_BETLINE
+  HELPSUBITEM IDM_BETPASS,         IDH_BETPASS
+  HELPSUBITEM IDM_BETDONTPASS,     IDH_BETDONTPASS
+  HELPSUBITEM IDM_BETCOME,         IDH_BETCOME
+  HELPSUBITEM IDM_BETDONTCOME,     IDH_BETDONTCOME
+  HELPSUBITEM IDM_BETPLACE,        IDH_BETPLACE
+  HELPSUBITEM IDM_BETPLACEFOUR,    IDH_BETPLACEFOUR
+  HELPSUBITEM IDM_BETPLACEFIVE,    IDH_BETPLACEFIVE
+  HELPSUBITEM IDM_BETPLACESIX,     IDH_BETPLACESIX
+  HELPSUBITEM IDM_BETPLACEEIGHT,   IDH_BETPLACEEIGHT
+  HELPSUBITEM IDM_BETPLACENINE,    IDH_BETPLACENINE
+  HELPSUBITEM IDM_BETPLACETEN,     IDH_BETPLACETEN
+  HELPSUBITEM IDM_BETPROPOSITION,  IDH_BETPROPOSITION
+  HELPSUBITEM IDM_BETANYSEVEN,     IDH_BETANYSEVEN
+  HELPSUBITEM IDM_BETANYCRAPS,     IDH_BETANYCRAPS
+  HELPSUBITEM IDM_BETTWO,          IDH_BETTWO
+  HELPSUBITEM IDM_BETTHREE,        IDH_BETTHREE
+  HELPSUBITEM IDM_BETELEVEN,       IDH_BETELEVEN
+  HELPSUBITEM IDM_BETTWELVE,       IDH_BETTWELVE
+  HELPSUBITEM IDM_BETHARDWAYS,     IDH_BETHARDWAYS
+  HELPSUBITEM IDM_BETHARDFOUR,     IDH_BETHARDFOUR
+  HELPSUBITEM IDM_BETHARDSIX,      IDH_BETHARDSIX
+  HELPSUBITEM IDM_BETHARDEIGHT,    IDH_BETHARDEIGHT
+  HELPSUBITEM IDM_BETHARDTEN,      IDH_BETHARDTEN
+  HELPSUBITEM IDM_BETBIGSIX,       IDH_BETBIGSIX
+  HELPSUBITEM IDM_BETBIGEIGHT,     IDH_BETBIGEIGHT
+  HELPSUBITEM IDM_BETFIELD,        IDH_BETFIELD
+
+  HELPSUBITEM IDM_OPTIONS,         IDH_OPTIONS
+  HELPSUBITEM IDM_OPTIONSMARKER,   IDH_OPTIONSMARKER
+  HELPSUBITEM IDM_OPTIONSSETTINGS, IDH_OPTIONSSETTINGS
+
+  HELPSUBITEM IDM_ROLL,            IDH_ROLL
+  HELPSUBITEM IDM_ROLLROLL,        IDH_ROLLROLL
+
+  HELPSUBITEM IDM_HELP,            IDH_HELP
+  HELPSUBITEM SC_HELPINDEX,        IDH_HELPINDEX
+  HELPSUBITEM SC_HELPEXTENDED,     IDH_HELPEXTENDED
+  HELPSUBITEM IDM_HELPHELP,        IDH_HELPHELP
+  HELPSUBITEM IDM_HELPABOUT, IDH_HELPABOUT
+}
+
+/****************************************************************/
+/* Accelerator Table                                            */
+/****************************************************************/
+
+ACCELTABLE ID_MAIN
+{
+  VK_SPACE, IDM_ROLLROLL,     VIRTUALKEY
+}
+
+/****************************************************************/
+/* String Table                                                 */
+/****************************************************************/
+
+STRINGTABLE
+{
+  IDS_APPLNAME,       "Las Vegas Craps"
+  IDS_AUTHOR,         "Troy Ankersen"
+  IDS_VERSION,        "32 bit version 2.00"
+  IDS_PRODUCTINFO,    "Product Information"
+  IDS_SEPARATOR,      " - "
+  IDS_CURRENCY,       "$ "
+  IDS_CLOSETITLE,     "Close"
+  IDS_MARKERTITLE,    "Marker"
+  IDS_NEWTITLE,       "New"
+  IDS_WINTITLE,       "Winner"
+  IDS_LOSETITLE,      "Loser"
+  IDS_PUSHTITLE,      "Push"
+  IDS_GUIDOTITLE,     "Guido"
+  IDS_SETTINGSTITLE,  "Settings"
+  IDS_HELPERRORTITLE, "Help Error"
+  IDS_ENTRYERROR,     "Entry Error"
+  IDS_PASS,           "Pass line"
+  IDS_DONTPASS,       "Don't Pass"
+  IDS_COME,           "Come line"
+  IDS_DONTCOME,       "Don't come"
+  IDS_BIGSIX,         "Big six"
+  IDS_BIGEIGHT,       "Big eight"
+  IDS_FIELD,          "Field"
+  IDS_PLACEFOUR,      "Place four"
+  IDS_PLACEFIVE,      "Place five"
+  IDS_PLACESIX,       "Place six"
+  IDS_PLACEEIGHT,     "Place eight"
+  IDS_PLACENINE,      "Place nine"
+  IDS_PLACETEN,       "Place ten"
+  IDS_ANYSEVEN,       "Any seven"
+  IDS_ANYCRAPS,       "Any craps"
+  IDS_TWO,            "Two"
+  IDS_THREE,          "Three"
+  IDS_ELEVEN,         "Eleven"
+  IDS_TWELVE,         "Twelve"
+  IDS_HARDFOUR,       "Hard four"
+  IDS_HARDSIX,        "Hard six"
+  IDS_HARDEIGHT,      "Hard eight"
+  IDS_HARDTEN,        "Hard ten"
+  IDS_HELPERROR,      "Help creation error.  Help is not available but the game can still be played."
+  IDS_CLOSEMESSAGE,   "Are you sure you want to close the game."
+  IDS_MINBET,         "The minimum bet at this table is $%-ld dollars."
+  IDS_ABSOLUTEMINBET, "The minimum bet must be at least one dollar."
+  IDS_ABSOLUTEMAXBET, "The maximum bet must be less than $%-ld dollars."
+  IDS_MINMAX,         "The minimum bet must be less than the maximum bet."
+  IDS_MAXBET,         "The maximum bet at this table is $%-ld dollars."
+  IDS_DEFMAX,         "The default bet must be less than the the maximum bet."
+  IDS_DEFMIN,         "The default bet must be greater than the minimum bet."
+  IDS_MAXMARKER,      "The maximum marker at this table is $%-ld dollars."
+  IDS_MAXODDS,        "The maximum odds you can place on your bet is $%-ld dollars."
+  IDS_NOTENOUGH,      "You only have $%-ld dollars in your bank."
+  IDS_NEWMINBET,      "You will need to borrow at least $%-ld dollars in order to place a bet."
+  IDS_WINNER,         "Winner on the %s.\n 
+                       Your total bet was $%-ld dollars.\n
+                       You won $%-ld dollars.\n
+                       Your Bank is now $%-ld dollars."
+  IDS_LOSER,          "Loser on the %s.\n
+                       Your total bet was $%-ld dollars.\n
+                       You lost $%-ld dollars.\n
+                       Your Bank is now $%-ld dollars."
+  IDS_PUSH,           "Push on the %s.\n
+                       Your total bet was $%-ld dollars.\n
+                       You won/lost $%-ld dollars.\n
+                       Your bank is now $%-ld dollars."
+  IDS_GUIDO,          "Guido has removed $%-ld dollars from your bank.\n
+                       Your bank is now $%-ld dollars.\n
+                       Your Marker is now $%-ld dollars."
+}
+
